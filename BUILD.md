@@ -40,7 +40,7 @@ git clone --depth=1 https://github.com/armbian/build armbian-build
 
 ```
 cd ~
-git clone <URL of this repository> ironcow-zero1
+git clone https://github.com/gloriouspidgeon855/ironcow-zero1-complete-armbian-candidate.git
 ```
 
 ## 3. Copy `userpatches` into the build tree
