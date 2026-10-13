@@ -34,7 +34,7 @@ plug that motherfucker into USB like a raspberry pi pico while holding the reset
 7. (if you fuck it up) a #2 Phillips head screwdriver plus a small spudger or a small flathead, like an eyeglass flathead or something. Or the stick, maybe. If it's powerful enough.
 8. Prolly like an hour. Less if you're competitive about it, I bet.
 
-Note: Files mentioned here will be available in the releases page.
+Note: Files mentioned here will be available in the [releases page.](https://github.com/gloriouspidgeon855/ironcow-zero1-complete-armbian-candidate/releases)
 
 ## 1. Put the stock unit into loader mode
 
