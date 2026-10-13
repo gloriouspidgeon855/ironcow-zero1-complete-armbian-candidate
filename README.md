@@ -6,8 +6,7 @@ built on the Rockchip RK3568. This repository holds an Armbian
 mainline U-Boot configuration. With it, the standard Armbian build
 system produces a Debian 13 image for this box.
 
-This is a release candidate. It is not part of Armbian, and Armbian does
-not support it.
+This is an independently formulated release candidate. It is not part of Armbian, and Armbian does not support it. I am not affiliated with the Armbian project, and I have not yet submitted this build target to the Armbian maintainers for review or upstreaming. It is very possible I did things wrong or idiosyncratically, here. I hope that it's helpful for you.
 
 ## Start here
 
