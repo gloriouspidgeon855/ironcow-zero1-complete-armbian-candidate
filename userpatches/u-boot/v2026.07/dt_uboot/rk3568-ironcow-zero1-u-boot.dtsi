@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+
+#include "rk356x-u-boot.dtsi"
+
+/ {
+	chosen {
+		u-boot,spl-boot-order = "same-as-spl", &sdhci;
+	};
+};
+
+/* Rear USB 3.0 Type-A: device mode in U-Boot (rockusb, UMS, ACM console) */
+&usb_host0_xhci {
+	dr_mode = "peripheral";
+	extcon = <&usb2phy0>;
+	maximum-speed = "high-speed";
+	phys = <&usb2phy0_otg>;
+	phy-names = "usb2-phy";
+};
+
+/* Do not drive 5V out of a port that is acting as a device */
+&vcc5v0_otg {
+	/delete-property/ regulator-always-on;
+	/delete-property/ regulator-boot-on;
+};
