@@ -132,7 +132,7 @@ case. It works only with the box in your hands and allows no remote access.
 1. Open the case. Connect a 3.3 V USB-to-serial adapter to the internal
    UART header. The console runs at 1500000 baud, 8N1.
 2. Apply power and watch the console. When the bootloader shows its
-   countdown ("Hit any key to stop autoboot"), press a key to stop at
+   countdown ("Hit any key to stop autoboot"), press and hold down Ctrl-C to stop at
    the `=>` prompt.
 3. Tell the kernel to start a shell in place of the normal startup, then
    boot:
