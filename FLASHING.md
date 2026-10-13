@@ -72,14 +72,11 @@ If the flash fails, you will see error text in the console pane on the right sid
 2. get access to the internal programming button to:
 3. hold it down (again, it's labelled U-BOOT, and situated beneath the fan assembly), then:
 4. Make sure RKDT is open on the "Download Image" screen, and says "Found One MASKROM Device" in the textbox at the bottom.
-5. In the memory loader table, you will now need exactly 2 rows. For row #1, set the Path cell value to the path to the miniloader binary file (`rk3568-ddr4-emmc-evb-miniloader.bin`). For row #2, set the Path cell value to the path to the Debian image file. ***IMPORTANT:*** The checkbox for row #1 should be *ticked*, and the checkbox for row #2 should be *cleared.*
-6. Verify the checkbox states for row #1 (ticked) and row #2 (unticked), then click Run.
-7. Wait for the miniloader image to download. If it works, you will see the device state text change from "Found One MASKROM Device" to "Found One LOADER Device"
-8. After you see "Found One LOADER Device" ***reverse the checkboxes.*** Tick the checkbox in row #2, untick the box in row #1.
-9. Verify the checkbox states for row #1 (unticked) and row #2 (ticked), then click Run.
-10. Wait between 3 and 16 minutes for the flashing process to complete.
-11. Congratulations! You probably have a Debian 13 box now. Enjoy!
-12. If it still didn't work, message me on Reddit. I'll reply when I'm not working.
+5. In the memory loader table, you will now need exactly 2 rows. For row #1, set the Path cell value to the path to the miniloader binary file (`rk3568-ddr4-emmc-evb-miniloader.bin`). For row #2, set the Path cell value to the path to the Debian image file. ***IMPORTANT:*** the checkboxes on both rows must be ticked.
+6. Verify the checkbox states for row #1 (ticked) and row #2 (also ticked), then click Run.
+7. Wait between 3 and 16 minutes for the flashing process to complete.
+8. Congratulations! You probably have a Debian 13 box now. Enjoy!
+9. If it still didn't work, message me on Reddit. I'll reply when I'm not working.
 
 Same note about Easy Way potentiality exists in the case of FUs here too.
 
