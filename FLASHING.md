@@ -27,7 +27,7 @@ plug that motherfucker into USB like a raspberry pi pico while holding the reset
 
 1. A YXK IronCow Zero1 NAS box.
 2. A high quality USB A-to-A cable, preferably USB 3.0.
-3. A Windows PC (you can do it on a Linux PC, but I haven't tried it. rkdeveloptool exists) with RKDevTool†† and Rockchip drivers††.
+3. A Windows (with RKDevTool†† and Rockchip drivers††) or Linux PC (with rkdeveloptool).
 4. A paperclip, thumbtack, bobby pin, probably a toothpick but I didn't try, or a freakishly small twig of some kind.
 5. The release image from the releases page, or a [custom-built image](BUILD.md).
 6. (if you fuck it up) the rk3568-ddr4-emmc-evb-miniloader.bin recovery program image from the releases page.†
@@ -40,12 +40,21 @@ Note: Files mentioned here will be available in the [releases page.](https://git
 
 You have been personally kissed by the BSP engineers at Rockchip with the software on this device. You do not need any internal access to the hardware inside to completely erase and replace the stock OS image. The vendor kernel tree the image was compiled with supports RockUSB programming commands out of the box. It will happily provide you the opportunity to overwrite the entire onboard eMMC flash without issue, following the steps below:
 
+
 ***WITH THE 12V POWER ADAPTER UNPLUGGED, AND REMAINING UNPLUGGED, THE ENTIRE TIME***
+
+### on Windows
 1. Connect your USB A-to-A cable to a computer with the Rockchip Developer Tool software and Rockchip drivers preinstalled. DO NOT PLUG THE CABLE INTO THE NAS YET.
 2. Launch RKDT.
 3. With a paperclip, thumbtack, freakish stick you found in the woods, or whatever else you can find to fit into the recessed RESET button hole on the back of the unit situated between the HDMI port and the USB type-C port, press firmly on the RESET button inside of the housing. Do not apply excessive force, the button is not particularly durable, but you should feel it click firmly.
 4. With your other hand, or with a third hand if one is available, insert the free end of the USB A-to-A cable already connected to your computer into the USB type-A port on the back of the unit (NOT the type-C port).
 5. RKDT should say "Found One LOADER Device" on the Download Image screen.
+
+### on Linux
+1. Connect your USB A-to-A cable to a Linux computer with rkdeveloptool installed
+2. With a paperclip, thumbtack, freakish stick you found in the woods, or whatever else you can find to fit into the recessed RESET button hole on the back of the unit situated between the HDMI port and the USB type-C port, press firmly on the RESET button inside of the housing. Do not apply excessive force, the button is not particularly durable, but you should feel it click firmly.
+3. With your other hand, or with a third hand if one is available, insert the free end of the USB A-to-A cable already connected to your computer into the USB type-A port on the back of the unit (NOT the type-C port).
+4. type `rkdeveloptool ld` and confirm the device shows up (LOADER or MASKROM)
 
 Proceed to the next section.
 
@@ -54,12 +63,21 @@ Proceed to the next section.
 THIS SECTION IS IRREVERSIBLE. There is no significant chance for it to irrevocably brick the device, however, if you interrupt the flashing process, there is a VERY HIGH CHANCE that you will have to physically disassemble the back plastic housing of the unit to access the factory maskROM initial programming button (it's labelled "U-BOOT" and beneath the fan). This is a pain in the ass, and will cause your total process time to exceed an hour, most assuredly. ***Make sure the cable is fully connected at both ends, and both the computer and the NAS box are in a physically secure location***. Flashing will take about 3 minutes if you have a high quality USB 3.0 cable. It could take up to 16 minutes if you have a USB 2.0 cable, by my testing.
 
 ***WITH THE 12V POWER ADAPTER UNPLUGGED, AND REMAINING UNPLUGGED, THE ENTIRE TIME***
+
+### on Windows
 1. Make sure RKDT is open on the "Download Image" screen, and says "Found One LOADER Device" in the textbox at the bottom.
 2. In the memory loader table, you should have exactly 1 row. Set the Path cell value to the path to your image binary file. To prevent issues with WIN32 path limits, I recommend you change the name of your image to something short, and place it right next to the RKDevTool.exe binary, so you can just set this cell to the short name of the file.
 3. Make sure the Address cell has the value 0x00000000, and the program checkbox is ticked.
 4. Click the Run button.
 5. Wait between 3 and 16 minutes for the flashing process to complete.
 6. Congratulations! You probably have a Debian 13 box now. Enjoy!
+
+### (on Linux)
+***WITH THE 12V POWER ADAPTER UNPLUGGED, AND REMAINING UNPLUGGED, THE ENTIRE TIME***
+```
+$ rkdeveloptool ld                      # confirm the device shows up (LOADER or MASKROM)
+$ rkdeveloptool wl 0 image.img          # write at sector 0
+```
 
 There's a chance that if the process failed, but failed late enough in the burn, the U-Boot partition will be fine, and you can actually just try The Easy Way.
 
